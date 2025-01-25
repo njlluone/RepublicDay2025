@@ -15,7 +15,7 @@ html{
 	 padding: 0;
 }
 body::after {
-  content: "Designed by NJLLU Company";
+  content: "Designed by NJLLU Org";
   position: fixed;
   bottom: 5px;
   right: 5px;
