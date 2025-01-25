@@ -11,6 +11,7 @@ document.getElementById('unfurlButton').addEventListener('click', () => {
 		const flag = document.getElementById('flag');
 		const thread = document.getElementById('thread');
 		const container = document.querySelector(".flag-container");
+		const flowersContainer = document.getElementById('flowers-container');
 		const unfurlHeight = container.offsetHeight * 0.3;
 		let unfurlWidth;
 
@@ -29,7 +30,27 @@ document.getElementById('unfurlButton').addEventListener('click', () => {
 
 		// Remove the thread after unfurling
 		thread.style.display = 'none';
-	  
+	    // Generate falling flowers
+		sleepFor(1000);
+		for (let i = 0; i < 20; i++) {
+		  const flower = document.createElement('div');
+		  flower.classList.add('flowers');
+		  flower.style.left = `${Math.random() * 100}%`;
+		  flower.style.top = "1.5rem";
+		  
+		  // Assign random animation delay
+		  
+		  flower.style.animationDelay = `${Math.random() * 5}s`; // Random delay between 0 to 5 seconds
+		  
+		  container.appendChild(flower);
+
+		  // Remove flower after animation ends
+		  flower.addEventListener('animationend', () => {
+			flower.remove();
+		  });
+		}
+
+  
 		const elementsWithId = document.querySelectorAll('#leftArm'); 
 
 		elementsWithId.forEach(element => {
@@ -43,4 +64,12 @@ function rotateArm(element) {
   element.style.top = "5px";
   element.style.animation = "1s"; 
   element.style.transform = "rotate(50deg)";
+}
+
+
+function sleepFor(sleepDuration){
+    var now = new Date().getTime();
+    while(new Date().getTime() < now + sleepDuration){ 
+        /* Do nothing */ 
+    }
 }
